@@ -1,10 +1,10 @@
-const Gameboard = {
-  gameboard: [],
-  row: 3,
-  column: 3,
+// Game board var is Immediately Invoked Function Expression
+const gameBoard = function () {
+  let row = 3;
+  let column = 3;
+
+  return { row, column };
 };
-const playerOne = {};
-const playerTwo = {};
 
 //Make display of the game in the console
 let screenArr = [];
@@ -26,9 +26,9 @@ let x = {
 };
 
 // Show the x players moves in the game display
-for (let i = 1; i <= Gameboard.row; i++) {
+for (let i = 1; i <= gameBoard().row; i++) {
   let row = [];
-  for (let j = 1; j <= Gameboard.column; j++) {
+  for (let j = 1; j <= gameBoard().column; j++) {
     if (
       (i === x.firstRound.row && j === x.firstRound.column) ||
       (i === x.secondRound.row && j === x.secondRound.column) ||
