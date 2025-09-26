@@ -37,3 +37,6 @@ for (let i = 0; i < Gameboard().rows; i++) {
   }
   console.log(row);
 }
+
+// Check if the row or column is complete(diagonal or straight)
+function checkForWinner() {}
