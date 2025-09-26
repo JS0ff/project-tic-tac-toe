@@ -36,10 +36,12 @@ for (let i = 0; i < Gameboard().rows; i++) {
   }
   console.log(row);
   tableDisplay.push(row);
-  console.log(tableDisplay);
 }
 
 // Check if the row or column is complete(diagonal or straight)
 function checkForWinner() {
-  // if()
+  //Check for the row
+  if (tableDisplay[0][0] && tableDisplay[0][1] && tableDisplay[0][2]) {
+    console.log("Winner!!!");
+  }
 }
