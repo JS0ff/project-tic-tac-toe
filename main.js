@@ -18,7 +18,6 @@ let secondPlayer = {
 // to change it when the player moves ---
 let tableDisplay = [];
 for (let i = 0; i < Gameboard().rows; i++) {
-  tableDisplay.push([]);
   console.log("{* " + "*" + " *}");
 }
 
@@ -36,7 +35,11 @@ for (let i = 0; i < Gameboard().rows; i++) {
     }
   }
   console.log(row);
+  tableDisplay.push(row);
+  console.log(tableDisplay);
 }
 
 // Check if the row or column is complete(diagonal or straight)
-function checkForWinner() {}
+function checkForWinner() {
+  // if()
+}
