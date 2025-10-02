@@ -17,9 +17,6 @@ let secondPlayer = {
 // ---note create coordinates for every star to be able
 // to change it when the player moves ---
 let tableDisplay = [];
-for (let i = 0; i < Gameboard().rows; i++) {
-  console.log("{* " + "*" + " *}");
-}
 
 // Ask the player to input the coordinates
 let userX = prompt("Please input the coordinates of X") - 1;
