@@ -2,7 +2,7 @@ function Gameboard() {
   const rows = 3;
   const columns = 3;
   const board = [];
-  return { rows, columns };
+  return { board, rows, columns };
 }
 
 let firstPlayer = {
@@ -14,12 +14,14 @@ let secondPlayer = {
 };
 
 //Shows the game table
-let tableDisplay = [];
+// let tableDisplay = [];
 
 //Make function that runs each round of the game
+//NOTE: round doesn't save all result. Need to recode it to make a whole game.
 function playRound() {
+  let board = Gameboard().board;
   //If table do not have any values in it, then create blocks
-  if (tableDisplay.length < 3) {
+  if (board.length < 3) {
     // Ask the player to input the coordinates
     let userX = prompt("Please input the coordinates of X") - 1;
     let userY = prompt("Please input the coordinates of Y") - 1;
@@ -33,7 +35,7 @@ function playRound() {
           row.push("*");
         }
       }
-      tableDisplay.push(row);
+      board.push(row);
     }
   } else {
     userX = prompt("Please input the coordinates of X") - 1;
@@ -42,17 +44,17 @@ function playRound() {
     for (let i = 0; i < Gameboard().rows; i++) {
       let row = [];
       for (let j = 0; j < Gameboard().columns; j++) {
-        if (tableDisplay[i][j] === "!") {
+        if (board[i][j] === "!") {
           row.push("!");
           continue;
         } else if (userX === i && userY === j) {
           row.push("!");
         } else row.push("*");
       }
-      tableDisplay[i] = row;
+      board[i] = row;
     }
   }
-  return tableDisplay;
+  return board;
 }
 
 // Check if the row or column is complete(diagonal or straight)
