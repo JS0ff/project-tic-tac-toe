@@ -28,6 +28,12 @@ function Gameboard() {
   return { getBoard, printBoard };
 }
 
+/*
+ ** A Cell represents one "square" on the board and can have one of
+ ** 0: no token is in the square,
+ ** 1: Player 1's token,
+ ** 2: Player 2's token
+ */
 function Cell() {
   let value = 0;
 
