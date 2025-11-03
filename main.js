@@ -62,3 +62,59 @@ function Cell() {
     getValue,
   };
 }
+
+/*
+ ** The GameController will be responsible for controlling the
+ ** flow and state of the game's turns, as well as whether
+ ** anybody has won the game
+ */
+
+function GameController(
+  playerOneName = "Player One",
+  playerTwoName = "Player Two"
+) {
+  const board = Gameboard();
+
+  const players = [
+    {
+      name: playerOneName,
+      token: "x",
+    },
+    {
+      name: playerTwoName,
+      token: "o",
+    },
+  ];
+
+  let activePlayer = players[0];
+
+  const switchPlayerTurn = () => {
+    activePlayer = activePlayer === players[0] ? players[1] : players[0];
+  };
+  const getActivePlayer = () => activePlayer;
+
+  const printNewRound = () => {
+    board.printBoard();
+    console.log(`${getActivePlayer().name}'s turn.`);
+  };
+
+  const playRound = (row, column) => {
+    // Select square for the current user
+    console.log(
+      `Dropping ${getActivePlayer().name}'s token into column ${column}...`
+    );
+    board.selectSquare(row, column, getActivePlayer().token);
+
+    switchPlayerTurn();
+    printNewRound();
+  };
+
+  printNewRound();
+
+  return {
+    playRound,
+    getActivePlayer,
+  };
+}
+
+const game = GameController();
