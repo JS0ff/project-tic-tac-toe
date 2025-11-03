@@ -17,6 +17,7 @@ function Gameboard() {
     }
   }
 
+  //This will be the method of getting the entire board that our UI will eventually need to render it.
   const getBoard = () => board;
 
   const printBoard = () => {
