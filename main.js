@@ -20,13 +20,26 @@ function Gameboard() {
   //This will be the method of getting the entire board that our UI will eventually need to render it.
   const getBoard = () => board;
 
+  // We need to find the exact square and the player who wants to input the token to the square.
+  const selectSquare = (row, column, player) => {
+    //Find all available cells in the board and if there is no return nothing
+    const availableCells = board
+      .filter((row) => row[column].getValue() === 0)
+      .map((row) => row[column]);
+
+    if (!availableCells.length) {
+      return;
+    }
+
+    board[row][column].addToken(player);
+  };
   const printBoard = () => {
     const boardWithCellValues = board.map((row) =>
       row.map((cell) => cell.getValue())
     );
     console.log(boardWithCellValues);
   };
-  return { getBoard, printBoard };
+  return { getBoard, selectSquare, printBoard };
 }
 
 /*
