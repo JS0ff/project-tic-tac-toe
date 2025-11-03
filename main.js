@@ -22,14 +22,8 @@ function Gameboard() {
 
   // We need to find the exact square and the player who wants to input the token to the square.
   const selectSquare = (row, column, player) => {
-    //Find all available cells in the board and if there is no return nothing
-    const availableCells = board
-      .filter((row) => row[column].getValue() === 0)
-      .map((row) => row[column]);
-
-    if (!availableCells.length) {
-      return;
-    }
+    // ** TODO
+    // 1) Create a if-else statement that will check if the square is empty if not the user cannot input token to it.
 
     board[row][column].addToken(player);
   };
