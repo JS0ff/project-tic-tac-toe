@@ -103,57 +103,58 @@ function GameController(
     /*  This is where we would check for a winner and handle that logic,
      such as a win message. */
     let currentBoard = board.getBoard();
-    let winner;
+    const checkForWinner = () => {
+      if (
+        // x vertically win condition
+        (currentBoard[0][0].getValue() === "x" &&
+          currentBoard[1][0].getValue() === "x" &&
+          currentBoard[2][0].getValue() === "x") ||
+        (currentBoard[0][1].getValue() === "x" &&
+          currentBoard[1][1].getValue() === "x" &&
+          currentBoard[2][1].getValue() === "x") ||
+        (currentBoard[0][2].getValue() === "x" &&
+          currentBoard[1][2].getValue() === "x" &&
+          currentBoard[2][2].getValue() === "x") ||
+        // x horizontal win condition
+        (currentBoard[0][0].getValue() === "x" &&
+          currentBoard[0][1].getValue() === "x" &&
+          currentBoard[0][2].getValue() === "x") ||
+        (currentBoard[1][0].getValue() === "x" &&
+          currentBoard[1][1].getValue() === "x" &&
+          currentBoard[1][2].getValue() === "x") ||
+        (currentBoard[2][0].getValue() === "x" &&
+          currentBoard[2][1].getValue() === "x" &&
+          currentBoard[2][2].getValue() === "x")
+      ) {
+        console.log("x is the winner");
+        winner = players[0];
+      } else if (
+        // o vertically win condition
+        (currentBoard[0][0].getValue() === "o" &&
+          currentBoard[1][0].getValue() === "o" &&
+          currentBoard[2][0].getValue() === "o") ||
+        (currentBoard[0][1].getValue() === "o" &&
+          currentBoard[1][1].getValue() === "o" &&
+          currentBoard[2][1].getValue() === "o") ||
+        (currentBoard[0][2].getValue() === "o" &&
+          currentBoard[1][2].getValue() === "o" &&
+          currentBoard[2][2].getValue() === "o") ||
+        // o horizontal win condition
+        (currentBoard[0][0].getValue() === "o" &&
+          currentBoard[0][1].getValue() === "o" &&
+          currentBoard[0][2].getValue() === "o") ||
+        (currentBoard[1][0].getValue() === "o" &&
+          currentBoard[1][1].getValue() === "o" &&
+          currentBoard[1][2].getValue() === "o") ||
+        (currentBoard[2][0].getValue() === "o" &&
+          currentBoard[2][1].getValue() === "o" &&
+          currentBoard[2][2].getValue() === "o")
+      ) {
+        console.log("o is the winner");
+      }
+    };
 
-    if (
-      // x vertically win condition
-      (currentBoard[0][0].getValue() === "x" &&
-        currentBoard[1][0].getValue() === "x" &&
-        currentBoard[2][0].getValue() === "x") ||
-      (currentBoard[0][1].getValue() === "x" &&
-        currentBoard[1][1].getValue() === "x" &&
-        currentBoard[2][1].getValue() === "x") ||
-      (currentBoard[0][2].getValue() === "x" &&
-        currentBoard[1][2].getValue() === "x" &&
-        currentBoard[2][2].getValue() === "x") ||
-      // x horizontal win condition
-      (currentBoard[0][0].getValue() === "x" &&
-        currentBoard[0][1].getValue() === "x" &&
-        currentBoard[0][2].getValue() === "x") ||
-      (currentBoard[1][0].getValue() === "x" &&
-        currentBoard[1][1].getValue() === "x" &&
-        currentBoard[1][2].getValue() === "x") ||
-      (currentBoard[2][0].getValue() === "x" &&
-        currentBoard[2][1].getValue() === "x" &&
-        currentBoard[2][2].getValue() === "x")
-    ) {
-      console.log("x is the winner");
-      winner = players[0];
-    } else if (
-      // o vertically win condition
-      (currentBoard[0][0].getValue() === "o" &&
-        currentBoard[1][0].getValue() === "o" &&
-        currentBoard[2][0].getValue() === "o") ||
-      (currentBoard[0][1].getValue() === "o" &&
-        currentBoard[1][1].getValue() === "o" &&
-        currentBoard[2][1].getValue() === "o") ||
-      (currentBoard[0][2].getValue() === "o" &&
-        currentBoard[1][2].getValue() === "o" &&
-        currentBoard[2][2].getValue() === "o") ||
-      // o horizontal win condition
-      (currentBoard[0][0].getValue() === "o" &&
-        currentBoard[0][1].getValue() === "o" &&
-        currentBoard[0][2].getValue() === "o") ||
-      (currentBoard[1][0].getValue() === "o" &&
-        currentBoard[1][1].getValue() === "o" &&
-        currentBoard[1][2].getValue() === "o") ||
-      (currentBoard[2][0].getValue() === "o" &&
-        currentBoard[2][1].getValue() === "o" &&
-        currentBoard[2][2].getValue() === "o")
-    ) {
-      console.log("o is the winner");
-    }
-
+    checkForWinner();
     switchPlayerTurn();
     printNewRound();
   };
