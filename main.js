@@ -151,6 +151,7 @@ function GameController(
           currentBoard[2][2].getValue() === "o")
       ) {
         console.log("o is the winner");
+        winner = players[1];
       }
     };
 
