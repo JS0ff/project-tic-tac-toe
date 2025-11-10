@@ -69,7 +69,7 @@ function GameController(
   playerTwoName = "Player Two"
 ) {
   const board = Gameboard();
-
+  let winner;
   const players = [
     {
       name: playerOneName,
@@ -126,7 +126,6 @@ function GameController(
           currentBoard[2][1].getValue() === "x" &&
           currentBoard[2][2].getValue() === "x")
       ) {
-        console.log("x is the winner");
         winner = players[0];
       } else if (
         // o vertically win condition
@@ -150,14 +149,19 @@ function GameController(
           currentBoard[2][1].getValue() === "o" &&
           currentBoard[2][2].getValue() === "o")
       ) {
-        console.log("o is the winner");
         winner = players[1];
       }
     };
-
     checkForWinner();
-    switchPlayerTurn();
-    printNewRound();
+
+    if (winner) {
+      console.log(`Game Over!`);
+      console.log(`${winner.token} is the winner!`);
+    } else {
+      console.log("Check");
+      switchPlayerTurn();
+      printNewRound();
+    }
   };
 
   printNewRound();
