@@ -154,9 +154,11 @@ function GameController(
     };
     checkForWinner();
 
+    //If the winner is defined print the winner and stop the game.
     if (winner) {
       console.log(`Game Over!`);
       console.log(`${winner.token} is the winner!`);
+      board.printBoard();
     } else {
       console.log("Check");
       switchPlayerTurn();
@@ -171,5 +173,3 @@ function GameController(
     getActivePlayer,
   };
 }
-
-const game = GameController();
