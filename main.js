@@ -171,5 +171,64 @@ function GameController(
   return {
     playRound,
     getActivePlayer,
+    getBoard: board.getBoard, // For ScreenController to call
   };
 }
+
+function ScreenController() {
+  const game = GameController();
+  const playerTurnDiv = document.querySelector(".turn");
+  const boardDiv = document.querySelector(".board");
+
+  const updateScreen = () => {
+    // clear the board
+    boardDiv.textContent = "";
+
+    // get the newest version of the board and player turn
+    const board = game.getBoard();
+    const activePlayer = game.getActivePlayer();
+
+    // Display player's turn
+    playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+
+    // Render board squares
+    let rowNumber = 0; // To give the number to the cells
+    board.forEach((row) => {
+      row.forEach((cell, index) => {
+        // Anything clickable should be a button!!
+        const cellButton = document.createElement("button");
+        cellButton.classList.add("cell");
+        // Create a data attribute to identify the column
+        // This makes it easier to pass into our `playRound` function
+        cellButton.dataset.column = index;
+        cellButton.dataset.row = rowNumber;
+        console.log(cellButton);
+        cellButton.textContent = cell.getValue();
+        boardDiv.appendChild(cellButton);
+      });
+      rowNumber++;
+    });
+  };
+
+  // Add event listener for the board
+  function clickHandlerBoard(e) {
+    const selectedRow = e.target.dataset.row;
+    const selectedColumn = e.target.dataset.column;
+
+    console.log(selectedRow, selectedColumn);
+    // Make sure I've clicked a column and not the gaps in between
+    if (!selectedRow) return;
+    if (!selectedColumn) return;
+
+    game.playRound(selectedRow, selectedColumn);
+    updateScreen();
+  }
+  boardDiv.addEventListener("click", clickHandlerBoard);
+
+  // Initial render
+  updateScreen();
+
+  // We don't need to return anything from this module because everything is encapsulated inside this screen controller.
+}
+
+ScreenController();
