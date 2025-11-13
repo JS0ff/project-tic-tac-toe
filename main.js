@@ -225,19 +225,30 @@ function ScreenController() {
     });
   };
 
+  // Create a value that will show when the game will end
+  let gameEnd = false;
+
   // Add event listener for the board
   function clickHandlerBoard(e) {
     const selectedRow = e.target.dataset.row;
     const selectedColumn = e.target.dataset.column;
 
-    console.log(selectedRow, selectedColumn);
     console.log(game.getWinner());
     // Make sure I've clicked a column and not the gaps in between
     if (!selectedRow) return;
     if (!selectedColumn) return;
 
     game.playRound(selectedRow, selectedColumn);
-    updateScreen();
+    // Create a condition where the screen will no long update
+    if (gameEnd == true) {
+      ("Game Is Over");
+    } else if (!!game.getWinner()) {
+      gameEnd = true;
+      updateScreen();
+    } else {
+      updateScreen();
+      console.log("Not yet");
+    }
   }
   boardDiv.addEventListener("click", clickHandlerBoard);
 
