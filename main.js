@@ -124,7 +124,14 @@ function GameController(
           currentBoard[1][2].getValue() === "x") ||
         (currentBoard[2][0].getValue() === "x" &&
           currentBoard[2][1].getValue() === "x" &&
-          currentBoard[2][2].getValue() === "x")
+          currentBoard[2][2].getValue() === "x") ||
+        // x diagonal win
+        (currentBoard[0][0].getValue() === "x" &&
+          currentBoard[1][1].getValue() === "x" &&
+          currentBoard[2][2].getValue() === "x") ||
+        (currentBoard[0][2].getValue() === "x" &&
+          currentBoard[1][1].getValue() === "x" &&
+          currentBoard[2][0].getValue() === "x")
       ) {
         winner = players[0];
       } else if (
@@ -147,7 +154,13 @@ function GameController(
           currentBoard[1][2].getValue() === "o") ||
         (currentBoard[2][0].getValue() === "o" &&
           currentBoard[2][1].getValue() === "o" &&
-          currentBoard[2][2].getValue() === "o")
+          currentBoard[2][2].getValue() === "o") ||
+        (currentBoard[0][0].getValue() === "o" &&
+          currentBoard[1][1].getValue() === "o" &&
+          currentBoard[2][2].getValue() === "o") ||
+        (currentBoard[0][2].getValue() === "o" &&
+          currentBoard[1][1].getValue() === "o" &&
+          currentBoard[2][0].getValue() === "o")
       ) {
         winner = players[1];
       }
