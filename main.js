@@ -133,7 +133,7 @@ function GameController(
           currentBoard[1][1].getValue() === "x" &&
           currentBoard[2][0].getValue() === "x")
       ) {
-        winner = players[0];
+        return (winner = players[0]);
       } else if (
         // o vertically win condition
         (currentBoard[0][0].getValue() === "o" &&
@@ -162,7 +162,7 @@ function GameController(
           currentBoard[1][1].getValue() === "o" &&
           currentBoard[2][0].getValue() === "o")
       ) {
-        winner = players[1];
+        return (winner = players[1]);
       }
     };
     checkForWinner();
@@ -178,12 +178,14 @@ function GameController(
       printNewRound();
     }
   };
+  const getWinner = () => winner; // Get the winner
 
   printNewRound();
 
   return {
     playRound,
     getActivePlayer,
+    getWinner,
     getBoard: board.getBoard, // For ScreenController to call
   };
 }
@@ -229,6 +231,7 @@ function ScreenController() {
     const selectedColumn = e.target.dataset.column;
 
     console.log(selectedRow, selectedColumn);
+    console.log(game.getWinner());
     // Make sure I've clicked a column and not the gaps in between
     if (!selectedRow) return;
     if (!selectedColumn) return;
