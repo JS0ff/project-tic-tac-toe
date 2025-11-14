@@ -44,7 +44,7 @@ function Gameboard() {
  ** 2: Player 2's token
  */
 function Cell() {
-  let value = 0;
+  let value = "";
 
   const addToken = (player) => {
     value = player;
@@ -111,7 +111,7 @@ function GameController(
       //Check for available squares in the game board
       //If there taken space increase takenSquares var
       currentBoard.map((cell) =>
-        cell.map((value) => (value.getValue() != "0" ? takenSquares++ : "0"))
+        cell.map((value) => (value.getValue() != "" ? takenSquares++ : ""))
       );
       //print if there is no available space in the game board
       if (takenSquares === 9) {
