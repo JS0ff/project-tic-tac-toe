@@ -103,7 +103,19 @@ function GameController(
     /*  This is where we would check for a winner and handle that logic,
      such as a win message. */
     let currentBoard = board.getBoard();
+
+    let availableSquares = 0;
     const checkForWinner = () => {
+      //Check for available squares in the game board
+      currentBoard.map((cell) =>
+        cell.map((value) =>
+          value.getValue() != "0" ? availableSquares++ : "0"
+        )
+      );
+      //print if there is no available space in the game board
+      if (availableSquares === 9) {
+        console.log("TIE!!!");
+      }
       if (
         // x vertically win condition
         (currentBoard[0][0].getValue() === "x" &&
@@ -241,7 +253,7 @@ function ScreenController() {
     game.playRound(selectedRow, selectedColumn);
     // Create a condition where the screen will no long update
     if (gameEnd == true) {
-      ("Game Is Over");
+      console.log("Game Is Over");
     } else if (!!game.getWinner()) {
       gameEnd = true;
       updateScreen();
