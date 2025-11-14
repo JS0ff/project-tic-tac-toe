@@ -73,11 +73,11 @@ function GameController(
   const players = [
     {
       name: playerOneName,
-      token: "x",
+      token: "X",
     },
     {
       name: playerTwoName,
-      token: "o",
+      token: "O",
     },
   ];
 
@@ -119,61 +119,61 @@ function GameController(
       }
       if (
         // x vertically win condition
-        (currentBoard[0][0].getValue() === "x" &&
-          currentBoard[1][0].getValue() === "x" &&
-          currentBoard[2][0].getValue() === "x") ||
-        (currentBoard[0][1].getValue() === "x" &&
-          currentBoard[1][1].getValue() === "x" &&
-          currentBoard[2][1].getValue() === "x") ||
-        (currentBoard[0][2].getValue() === "x" &&
-          currentBoard[1][2].getValue() === "x" &&
-          currentBoard[2][2].getValue() === "x") ||
+        (currentBoard[0][0].getValue() === players[0].token &&
+          currentBoard[1][0].getValue() === players[0].token &&
+          currentBoard[2][0].getValue() === players[0].token) ||
+        (currentBoard[0][1].getValue() === players[0].token &&
+          currentBoard[1][1].getValue() === players[0].token &&
+          currentBoard[2][1].getValue() === players[0].token) ||
+        (currentBoard[0][2].getValue() === players[0].token &&
+          currentBoard[1][2].getValue() === players[0].token &&
+          currentBoard[2][2].getValue() === players[0].token) ||
         // x horizontal win condition
-        (currentBoard[0][0].getValue() === "x" &&
-          currentBoard[0][1].getValue() === "x" &&
-          currentBoard[0][2].getValue() === "x") ||
-        (currentBoard[1][0].getValue() === "x" &&
-          currentBoard[1][1].getValue() === "x" &&
-          currentBoard[1][2].getValue() === "x") ||
-        (currentBoard[2][0].getValue() === "x" &&
-          currentBoard[2][1].getValue() === "x" &&
-          currentBoard[2][2].getValue() === "x") ||
+        (currentBoard[0][0].getValue() === players[0].token &&
+          currentBoard[0][1].getValue() === players[0].token &&
+          currentBoard[0][2].getValue() === players[0].token) ||
+        (currentBoard[1][0].getValue() === players[0].token &&
+          currentBoard[1][1].getValue() === players[0].token &&
+          currentBoard[1][2].getValue() === players[0].token) ||
+        (currentBoard[2][0].getValue() === players[0].token &&
+          currentBoard[2][1].getValue() === players[0].token &&
+          currentBoard[2][2].getValue() === players[0].token) ||
         // x diagonal win
-        (currentBoard[0][0].getValue() === "x" &&
-          currentBoard[1][1].getValue() === "x" &&
-          currentBoard[2][2].getValue() === "x") ||
-        (currentBoard[0][2].getValue() === "x" &&
-          currentBoard[1][1].getValue() === "x" &&
-          currentBoard[2][0].getValue() === "x")
+        (currentBoard[0][0].getValue() === players[0].token &&
+          currentBoard[1][1].getValue() === players[0].token &&
+          currentBoard[2][2].getValue() === players[0].token) ||
+        (currentBoard[0][2].getValue() === players[0].token &&
+          currentBoard[1][1].getValue() === players[0].token &&
+          currentBoard[2][0].getValue() === players[0].token)
       ) {
         return (winner = players[0]);
       } else if (
         // o vertically win condition
-        (currentBoard[0][0].getValue() === "o" &&
-          currentBoard[1][0].getValue() === "o" &&
-          currentBoard[2][0].getValue() === "o") ||
-        (currentBoard[0][1].getValue() === "o" &&
-          currentBoard[1][1].getValue() === "o" &&
-          currentBoard[2][1].getValue() === "o") ||
-        (currentBoard[0][2].getValue() === "o" &&
-          currentBoard[1][2].getValue() === "o" &&
-          currentBoard[2][2].getValue() === "o") ||
+        (currentBoard[0][0].getValue() === players[1].token &&
+          currentBoard[1][0].getValue() === players[1].token &&
+          currentBoard[2][0].getValue() === players[1].token) ||
+        (currentBoard[0][1].getValue() === players[1].token &&
+          currentBoard[1][1].getValue() === players[1].token &&
+          currentBoard[2][1].getValue() === players[1].token) ||
+        (currentBoard[0][2].getValue() === players[1].token &&
+          currentBoard[1][2].getValue() === players[1].token &&
+          currentBoard[2][2].getValue() === players[1].token) ||
         // o horizontal win condition
-        (currentBoard[0][0].getValue() === "o" &&
-          currentBoard[0][1].getValue() === "o" &&
-          currentBoard[0][2].getValue() === "o") ||
-        (currentBoard[1][0].getValue() === "o" &&
-          currentBoard[1][1].getValue() === "o" &&
-          currentBoard[1][2].getValue() === "o") ||
-        (currentBoard[2][0].getValue() === "o" &&
-          currentBoard[2][1].getValue() === "o" &&
-          currentBoard[2][2].getValue() === "o") ||
-        (currentBoard[0][0].getValue() === "o" &&
-          currentBoard[1][1].getValue() === "o" &&
-          currentBoard[2][2].getValue() === "o") ||
-        (currentBoard[0][2].getValue() === "o" &&
-          currentBoard[1][1].getValue() === "o" &&
-          currentBoard[2][0].getValue() === "o")
+        (currentBoard[0][0].getValue() === players[1].token &&
+          currentBoard[0][1].getValue() === players[1].token &&
+          currentBoard[0][2].getValue() === players[1].token) ||
+        (currentBoard[1][0].getValue() === players[1].token &&
+          currentBoard[1][1].getValue() === players[1].token &&
+          currentBoard[1][2].getValue() === players[1].token) ||
+        (currentBoard[2][0].getValue() === players[1].token &&
+          currentBoard[2][1].getValue() === players[1].token &&
+          currentBoard[2][2].getValue() === players[1].token) ||
+        (currentBoard[0][0].getValue() === players[1].token &&
+          currentBoard[1][1].getValue() === players[1].token &&
+          currentBoard[2][2].getValue() === players[1].token) ||
+        (currentBoard[0][2].getValue() === players[1].token &&
+          currentBoard[1][1].getValue() === players[1].token &&
+          currentBoard[2][0].getValue() === players[1].token)
       ) {
         return (winner = players[1]);
       }
