@@ -96,7 +96,9 @@ function GameController(
   const playRound = (row, column) => {
     // Select square for the current user
     console.log(
-      `Dropping ${getActivePlayer().name}'s token into column ${column}...`
+      `Dropping ${
+        getActivePlayer().name
+      }'s token into column ${column} and row ${row}...`
     );
     board.selectSquare(row, column, getActivePlayer().token);
 
@@ -104,17 +106,15 @@ function GameController(
      such as a win message. */
     let currentBoard = board.getBoard();
 
-    let availableSquares = 0;
+    let takenSquares = 0;
     const checkForWinner = () => {
       //Check for available squares in the game board
       currentBoard.map((cell) =>
-        cell.map((value) =>
-          value.getValue() != "0" ? availableSquares++ : "0"
-        )
+        cell.map((value) => (value.getValue() != "0" ? takenSquares++ : "0"))
       );
       //print if there is no available space in the game board
-      if (availableSquares === 9) {
-        console.log("TIE!!!");
+      if (takenSquares === 9) {
+        winner = 0;
       }
       if (
         // x vertically win condition
@@ -180,7 +180,10 @@ function GameController(
     checkForWinner();
 
     //If the winner is defined print the winner and stop the game.
-    if (winner) {
+    if (winner === 0) {
+      console.log("No winner!");
+      board.printBoard();
+    } else if (winner) {
       console.log(`Game Over!`);
       console.log(`${winner.token} is the winner!`);
       board.printBoard();
@@ -229,7 +232,6 @@ function ScreenController() {
         // This makes it easier to pass into our `playRound` function
         cellButton.dataset.column = index;
         cellButton.dataset.row = rowNumber;
-        console.log(cellButton);
         cellButton.textContent = cell.getValue();
         boardDiv.appendChild(cellButton);
       });
@@ -244,8 +246,6 @@ function ScreenController() {
   function clickHandlerBoard(e) {
     const selectedRow = e.target.dataset.row;
     const selectedColumn = e.target.dataset.column;
-
-    console.log(game.getWinner());
     // Make sure I've clicked a column and not the gaps in between
     if (!selectedRow) return;
     if (!selectedColumn) return;
@@ -259,7 +259,6 @@ function ScreenController() {
       updateScreen();
     } else {
       updateScreen();
-      console.log("Not yet");
     }
   }
   boardDiv.addEventListener("click", clickHandlerBoard);
