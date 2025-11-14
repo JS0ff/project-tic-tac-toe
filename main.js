@@ -109,6 +109,7 @@ function GameController(
     let takenSquares = 0;
     const checkForWinner = () => {
       //Check for available squares in the game board
+      //If there taken space increase takenSquares var
       currentBoard.map((cell) =>
         cell.map((value) => (value.getValue() != "0" ? takenSquares++ : "0"))
       );
@@ -181,7 +182,7 @@ function GameController(
 
     //If the winner is defined print the winner and stop the game.
     if (winner === 0) {
-      console.log("No winner!");
+      console.log("No winner! Game is Over!");
       board.printBoard();
     } else if (winner) {
       console.log(`Game Over!`);
