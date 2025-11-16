@@ -63,6 +63,8 @@ dialog {
 }
 
 .header {
+  position: relative;
+  top: 20px;
   display: flex;
   text-align: center;
 }
