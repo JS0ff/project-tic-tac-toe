@@ -33,6 +33,7 @@ body {
 
 /* Center the dialog container */
 dialog {
+  color: black;
   border: #b9d7ea solid;
   border-radius: 10px;
   padding-top: 8px;
@@ -46,7 +47,6 @@ dialog {
   transform: translate(-50%, -50%);
   height: 50%;
   width: 25%;
-  font-size: 18px;
   background-color: #e3fdfd;
   font-family:
     system-ui,
@@ -68,7 +68,7 @@ dialog {
 }
 dialog h3 {
   justify-self: center;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 form {
@@ -76,6 +76,18 @@ form {
   flex-direction: column;
   font-weight: 500;
   gap: 50px;
+}
+
+form p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+form input {
+  height: 25px;
+  font-size: 17px;
+  border: solid #769fcd;
+  border-radius: 5px;
 }
 
 form > * {
