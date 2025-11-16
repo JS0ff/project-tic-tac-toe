@@ -7,9 +7,11 @@ html,
 body {
   height: 100%;
   background-color: #1d546c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 h1 {
   color: #ffffff;
