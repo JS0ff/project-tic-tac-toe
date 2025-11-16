@@ -220,7 +220,7 @@ function ScreenController() {
     const activePlayer = game.getActivePlayer();
 
     // Display player's turn
-    playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+    playerTurnDiv.textContent = `${activePlayer.name}'s Turn...`;
 
     // Render board squares
     let rowNumber = 0; // To give the number to the cells
