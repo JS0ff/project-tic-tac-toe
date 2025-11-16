@@ -75,6 +75,7 @@ dialog h3 {
 
 form {
   display: flex;
+  align-items: center;
   flex-direction: column;
   font-weight: 500;
   gap: 50px;
@@ -96,4 +97,22 @@ form > * {
   display: flex;
   gap: 15px;
   flex-direction: column;
+}
+
+form button {
+  display: flex;
+  background-color: #f6f6f6;
+  color: #769fcd;
+  font-weight: 600;
+  border: #769fcd solid;
+  border-radius: 15px;
+  justify-content: center;
+  height: 40px;
+  font-size: 22px;
+  width: 155px;
+}
+
+form button a {
+  text-decoration: none;
+  color: #000000;
 }
