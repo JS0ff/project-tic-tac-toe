@@ -67,7 +67,6 @@ button.cell {
   color: black;
   border: #b9d7ea solid;
   border-radius: 10px;
-  padding-top: 8px;
   align-items: center;
   display: flex;
   gap: 45px;
@@ -76,8 +75,8 @@ button.cell {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
-  width: 25%;
+  height: 45%;
+  width: 30%;
   background-color: #e3fdfd;
   font-family:
     system-ui,
@@ -97,13 +96,12 @@ dialog {
   color: black;
   border: #b9d7ea solid;
   border-radius: 10px;
-  padding-top: 8px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
-  width: 25%;
+  height: 45%;
+  width: 30%;
   background-color: #e3fdfd;
   font-family:
     system-ui,
@@ -130,14 +128,28 @@ dialog h3 {
   font-size: 1.5rem;
 }
 
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 form {
+  height: 19.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   flex-direction: column;
   font-weight: 500;
   gap: 50px;
 }
-
+header h2 {
+  color: #0c2b4e;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 form p {
   font-size: 16px;
   font-weight: 600;
@@ -156,20 +168,32 @@ form > * {
   flex-direction: column;
 }
 
-form button {
+.buttons-container button {
   display: flex;
+
   background-color: #f6f6f6;
   color: #769fcd;
   font-weight: 600;
   border: #769fcd solid;
   border-radius: 15px;
   justify-content: center;
+  align-items: center;
   height: 40px;
   font-size: 22px;
-  width: 155px;
+  width: 5em;
 }
 
 form button a {
   text-decoration: none;
   color: #000000;
+}
+
+form input {
+  width: 250px;
+  height: 30px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
 }

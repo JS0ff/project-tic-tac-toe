@@ -8,22 +8,40 @@
   </head>
   <body>
     <dialog id="favDialog">
+      <header>
+        <h2>
+          Player's <br />
+          Nicknames
+        </h2>
+      </header>
       <form>
-        <p>
-          <label>
-            1st Player Name:
-            <input id="inputOne" type="text" />
-          </label>
-        </p>
-        <p>
-          <label>
-            2nd Player Name:
-            <input id="inputTwo" type="text" />
-          </label>
-        </p>
-        <div>
-          <button id="confirmBtn" value="default">Confirm</button>
-          <button value="cancel" formmethod="dialog">Cancel</button>
+        <div class="input-containers">
+          <p>
+            <label>
+              <input
+                placeholder="Enter 1st Player Nickname"
+                aria-required="true"
+                required
+                id="inputOne"
+                type="text"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              <input
+                placeholder="Enter 2nd Player Nickname"
+                aria-required="true"
+                required
+                id="inputTwo"
+                type="text"
+              />
+            </label>
+          </p>
+        </div>
+        <div class="buttons-container">
+          <button>Cancel</button>
+          <button formmethod="dialog" id="confirmBtn">Confirm</button>
         </div>
       </form>
     </dialog>

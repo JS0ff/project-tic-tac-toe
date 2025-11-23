@@ -6,8 +6,6 @@
 
 const showButton = document.getElementById("showDialog");
 const favDialog = document.getElementById("favDialog");
-const outputBoxOne = document.getElementById("player-one");
-const outputBoxTwo = document.getElementById("player-two");
 const inputElOne = document.getElementById("inputOne");
 const inputElTwo = document.getElementById("inputTwo");
 const confirmBtn = document.querySelector("#confirmBtn");
@@ -15,25 +13,19 @@ const form = document.querySelector("form");
 
 // "Show the dialog" button opens the <dialog> modally
 showButton.addEventListener("click", () => {
-  console.log("click");
   favDialog.showModal();
 });
 
+let playerOne;
+let playerTwo;
+
 // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
 favDialog.addEventListener("close", (e) => {
-  console.log(favDialog.returnValue);
   const players = favDialog.returnValue.split(" ");
-  const playerOne = players[0];
-  const playerTwo = players[1];
+  playerOne = players[0];
+  playerTwo = players[1];
   console.log("Player One is: " + playerOne);
   console.log("Player Two is: " + playerTwo);
-
-  console.log(favDialog);
-
-  // outputBoxOne.value =
-  //   favDialog.returnValue === "default"
-  //     ? "No return value."
-  //     : `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
 });
 
 // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
