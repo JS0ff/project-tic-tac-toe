@@ -7,11 +7,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <dialog id="favDialog">
+      <form>
+        <p>
+          <label>
+            1st Player Name:
+            <input id="inputOne" type="text" />
+          </label>
+        </p>
+        <p>
+          <label>
+            2nd Player Name:
+            <input id="inputTwo" type="text" />
+          </label>
+        </p>
+        <div>
+          <button id="confirmBtn" value="default">Confirm</button>
+          <button value="cancel" formmethod="dialog">Cancel</button>
+        </div>
+      </form>
+    </dialog>
     <div class="player1">
       <h2>Player 1</h2>
       <h3>Name:</h3>
     </div>
     <div class="container">
+      <div class="input-name">
+        <button id="showDialog">Show Modal</button>
+      </div>
       <h1 class="turn"></h1>
       <div class="board"></div>
     </div>
@@ -19,23 +42,6 @@
       <h2>Player 2</h2>
       <h3>Name:</h3>
     </div>
-    <!-- <dialog>
-      <div class="header">
-        <h3>Input Players Nicknames</h3>
-      </div>
-      <form method="dialog">
-        <div id="first-player-input">
-          <p>#1 Player Nickname</p>
-          <input type="text" />
-        </div>
-        <div id="second-player-input">
-          <p>#2 Player Nickname</p>
-          <input type="text" />
-        </div>
-
-        <button><a href="">Submit</a></button>
-      </form>
-    </dialog> -->
     <script src="main.js"></script>
   </body>
 </html>

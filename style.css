@@ -63,7 +63,7 @@ button.cell {
 }
 
 /* Center the dialog container */
-dialog {
+::backdrop {
   color: black;
   border: #b9d7ea solid;
   border-radius: 10px;
@@ -72,6 +72,32 @@ dialog {
   display: flex;
   gap: 45px;
   flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 25%;
+  background-color: #e3fdfd;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+dialog {
+  color: black;
+  border: #b9d7ea solid;
+  border-radius: 10px;
+  padding-top: 8px;
   position: absolute;
   left: 50%;
   top: 50%;
