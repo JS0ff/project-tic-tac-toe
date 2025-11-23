@@ -11,13 +11,13 @@ const inputElTwo = document.getElementById("inputTwo");
 const confirmBtn = document.querySelector("#confirmBtn");
 const form = document.querySelector("form");
 
+const firstNameHeader = document.getElementById("first-name");
+const secondNameHeader = document.getElementById("second-name");
+
 // "Show the dialog" button opens the <dialog> modally
 showButton.addEventListener("click", () => {
   favDialog.showModal();
 });
-
-let playerOne;
-let playerTwo;
 
 // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
 favDialog.addEventListener("close", (e) => {
@@ -32,6 +32,9 @@ favDialog.addEventListener("close", (e) => {
 confirmBtn.addEventListener("click", (event) => {
   event.preventDefault(); // We don't want to submit this fake form
   (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
+  const players = favDialog.returnValue.split(" ");
+  firstNameHeader.textContent = players[0];
+  secondNameHeader.textContent = players[1];
 });
 
 function Gameboard() {
