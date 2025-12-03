@@ -14,6 +14,8 @@ const form = document.querySelector("form");
 const firstNameHeader = document.getElementById("first-name");
 const secondNameHeader = document.getElementById("second-name");
 
+favDialog.showModal();
+
 // "Show the dialog" button opens the <dialog> modally
 showButton.addEventListener("click", () => {
   favDialog.showModal();
