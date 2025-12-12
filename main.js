@@ -25,8 +25,6 @@ showButton.addEventListener("click", () => {
 cancelBtn.addEventListener("click", (event) => {
   event.preventDefault(); // We don't want to submit this fake form
   (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
-  firstNameHeader.textContent = "";
-  secondNameHeader.textContent = "";
 });
 
 // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
