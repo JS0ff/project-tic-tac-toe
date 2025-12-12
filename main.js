@@ -9,6 +9,7 @@ const favDialog = document.getElementById("favDialog");
 const inputElOne = document.getElementById("inputOne");
 const inputElTwo = document.getElementById("inputTwo");
 const confirmBtn = document.querySelector("#confirmBtn");
+const cancelBtn = document.querySelector("#cancelBtn");
 const form = document.querySelector("form");
 
 const firstNameHeader = document.getElementById("first-name");
@@ -21,13 +22,11 @@ showButton.addEventListener("click", () => {
   favDialog.showModal();
 });
 
-// "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-favDialog.addEventListener("close", (e) => {
-  const players = favDialog.returnValue.split(" ");
-  playerOne = players[0];
-  playerTwo = players[1];
-  console.log("Player One is: " + playerOne);
-  console.log("Player Two is: " + playerTwo);
+cancelBtn.addEventListener("click", (event) => {
+  event.preventDefault(); // We don't want to submit this fake form
+  (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
+  firstNameHeader.textContent = "";
+  secondNameHeader.textContent = "";
 });
 
 // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
