@@ -4,38 +4,6 @@
  ** selectSquare method to be able to add Cells to squares
  */
 
-const showButton = document.getElementById("showDialog");
-const favDialog = document.getElementById("favDialog");
-const inputElOne = document.getElementById("inputOne");
-const inputElTwo = document.getElementById("inputTwo");
-const confirmBtn = document.querySelector("#confirmBtn");
-const cancelBtn = document.querySelector("#cancelBtn");
-const form = document.querySelector("form");
-
-const firstNameHeader = document.getElementById("first-name");
-const secondNameHeader = document.getElementById("second-name");
-
-favDialog.showModal();
-
-// "Show the dialog" button opens the <dialog> modally
-showButton.addEventListener("click", () => {
-  favDialog.showModal();
-});
-
-cancelBtn.addEventListener("click", (event) => {
-  event.preventDefault(); // We don't want to submit this fake form
-  (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
-});
-
-// Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
-confirmBtn.addEventListener("click", (event) => {
-  event.preventDefault(); // We don't want to submit this fake form
-  (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
-  const players = favDialog.returnValue.split(" ");
-  firstNameHeader.textContent = players[0];
-  secondNameHeader.textContent = players[1];
-});
-
 function Gameboard() {
   const rows = 3;
   const columns = 3;
@@ -137,8 +105,7 @@ function GameController(
     /*  This is where we would check for a winner and handle that logic,
      such as a win message. */
     let currentBoard = board.getBoard();
-
-    let takenSquares = 0;
+    let takenSquares = 0; // variable to save count of taken squares
     const checkForWinner = () => {
       //Check for available squares in the game board
       //If there taken space increase takenSquares var
@@ -147,7 +114,7 @@ function GameController(
       );
       //print if there is no available space in the game board
       if (takenSquares === 9) {
-        winner = 0;
+        winner = 0; // Draw!
       }
       if (
         // x vertically win condition
@@ -239,6 +206,39 @@ function GameController(
 }
 
 function ScreenController() {
+  //Input the name of the players
+  const showButton = document.getElementById("showDialog");
+  const favDialog = document.getElementById("favDialog");
+  const inputElOne = document.getElementById("inputOne");
+  const inputElTwo = document.getElementById("inputTwo");
+  const confirmBtn = document.querySelector("#confirmBtn");
+  const cancelBtn = document.querySelector("#cancelBtn");
+  const form = document.querySelector("form");
+
+  const firstNameHeader = document.getElementById("first-name");
+  const secondNameHeader = document.getElementById("second-name");
+
+  favDialog.showModal();
+
+  // "Show the dialog" button opens the <dialog> modally
+  showButton.addEventListener("click", () => {
+    favDialog.showModal();
+  });
+  // If Cancel was pressed, send blank input.
+  cancelBtn.addEventListener("click", (event) => {
+    event.preventDefault(); // We don't want to submit this fake form
+    (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
+  });
+
+  // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
+  confirmBtn.addEventListener("click", (event) => {
+    event.preventDefault(); // We don't want to submit this fake form
+    (favDialog.close(inputElOne.value + " " + inputElTwo.value), form.reset()); // Have to send the select box value here.
+    const players = favDialog.returnValue.split(" ");
+    firstNameHeader.textContent = players[0];
+    secondNameHeader.textContent = players[1];
+  });
+
   const game = GameController();
   const playerTurnDiv = document.querySelector(".turn");
   const boardDiv = document.querySelector(".board");
