@@ -30,7 +30,7 @@ function Gameboard() {
   };
   const printBoard = () => {
     const boardWithCellValues = board.map((row) =>
-      row.map((cell) => cell.getValue())
+      row.map((cell) => cell.getValue()),
     );
     console.log(boardWithCellValues);
   };
@@ -66,7 +66,7 @@ function Cell() {
 
 function GameController(
   playerOneName = "Player One",
-  playerTwoName = "Player Two"
+  playerTwoName = "Player Two",
 ) {
   const board = Gameboard();
   let winner;
@@ -98,7 +98,7 @@ function GameController(
     console.log(
       `Dropping ${
         getActivePlayer().name
-      }'s token into column ${column} and row ${row}...`
+      }'s token into column ${column} and row ${row}...`,
     );
     board.selectSquare(row, column, getActivePlayer().token);
 
@@ -110,7 +110,7 @@ function GameController(
       //Check for available squares in the game board
       //If there taken space increase takenSquares var
       currentBoard.map((cell) =>
-        cell.map((value) => (value.getValue() != "" ? takenSquares++ : ""))
+        cell.map((value) => (value.getValue() != "" ? takenSquares++ : "")),
       );
       //print if there is no available space in the game board
       if (takenSquares === 9) {
@@ -279,9 +279,6 @@ function ScreenController() {
   function clickHandlerBoard(e) {
     const selectedRow = e.target.dataset.row;
     const selectedColumn = e.target.dataset.column;
-    // Make sure I've clicked a column and not the gaps in between
-    if (!selectedRow) return;
-    if (!selectedColumn) return;
 
     game.playRound(selectedRow, selectedColumn);
     // Create a condition where the screen will no long update
