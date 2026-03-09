@@ -19,7 +19,6 @@ function Gameboard() {
 
   //This will be the method of getting the entire board that our UI will eventually need to render it.
   const getBoard = () => board;
-
   // We need to find the exact square and the player who wants to input the token to the square.
   const selectSquare = (row, column, player) => {
     // If square is already taken return nothing
@@ -52,10 +51,7 @@ function Cell() {
 
   const getValue = () => value;
 
-  return {
-    addToken,
-    getValue,
-  };
+  return { addToken, getValue };
 }
 
 /*
@@ -204,6 +200,10 @@ function GameController(
     getBoard: board.getBoard, // For ScreenController to call
   };
 }
+
+/*
+ScreenController will be responsible for UI and dom manipulations. 
+*/
 
 function ScreenController() {
   //Input the name of the players
