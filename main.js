@@ -292,6 +292,9 @@ function ScreenController() {
     const selectedColumn = e.target.dataset.column;
     const board = game.getBoard();
 
+    // Alert if the user is trying to play after the game finished
+    if (gameEnd) alert("The game is finished!");
+
     if (board[selectedRow][selectedColumn].getValue()) {
       alert("Attention! The square is taken.\nPlease choose the other one");
     } else {
