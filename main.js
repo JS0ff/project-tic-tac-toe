@@ -1,4 +1,5 @@
 /*
+====================================GAMEBOARD=================================
  ** The Gameboard represents the state of the board
  ** Each square holds a Cell and we expose a
  ** selectSquare method to be able to add Cells to squares
@@ -37,6 +38,7 @@ function Gameboard() {
 }
 
 /*
+==================================CELL====================================
  ** A Cell represents one "square" on the board and can have one of
  ** 0: no token is in the square,
  ** 1: Player 1's token,
@@ -55,6 +57,7 @@ function Cell() {
 }
 
 /*
+=============================== GAME CONTROLLER =================================
  ** The GameController will be responsible for controlling the
  ** flow and state of the game's turns, as well as whether
  ** anybody has won the game
@@ -173,6 +176,7 @@ function GameController(
         return (winner = players[1]);
       }
     };
+
     checkForWinner();
 
     //If the winner is defined print the winner and stop the game.
@@ -184,7 +188,6 @@ function GameController(
       console.log(`${winner.token} is the winner!`);
       board.printBoard();
     } else {
-      console.log("Check");
       switchPlayerTurn();
       printNewRound();
     }
@@ -202,6 +205,7 @@ function GameController(
 }
 
 /*
+====================================SCREEN CONTROLLER========================================
 ScreenController will be responsible for UI and dom manipulations. 
 */
 
@@ -242,13 +246,13 @@ function ScreenController() {
   const game = GameController();
   const playerTurnDiv = document.querySelector(".turn");
   const boardDiv = document.querySelector(".board");
+  const board = game.getBoard();
 
   const updateScreen = () => {
     // clear the board
     boardDiv.textContent = "";
 
     // get the newest version of the board and player turn
-    const board = game.getBoard();
     const activePlayer = game.getActivePlayer();
 
     // Display player's turn
@@ -279,8 +283,15 @@ function ScreenController() {
   function clickHandlerBoard(e) {
     const selectedRow = e.target.dataset.row;
     const selectedColumn = e.target.dataset.column;
+    const board = game.getBoard();
 
-    game.playRound(selectedRow, selectedColumn);
+    if (board[selectedRow][selectedColumn].getValue()) {
+      alert("Attention! The square is taken.\nPlease choose the other one");
+    } else {
+      game.playRound(selectedRow, selectedColumn);
+    }
+
+    //calling the gameboard and then check for the place is empty.
     // Create a condition where the screen will no long update
     if (gameEnd == true) {
       console.log("Game Is Over");
