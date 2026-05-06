@@ -274,6 +274,13 @@ function ScreenController() {
       });
       rowNumber++;
     });
+
+    // Update the screen for the winner
+    gameResults = () => {
+      console.log(game.getWinner().name + " is the winner!!!");
+      playerTurnDiv.textContent = game.getWinner().name + " is the winner!!!";
+    };
+    if (game.getWinner()) gameResults();
   };
 
   // Create a value that will show when the game will end
