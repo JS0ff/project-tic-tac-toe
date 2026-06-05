@@ -251,6 +251,7 @@ function ScreenController() {
   const updateScreen = () => {
     // clear the board
     boardDiv.textContent = "";
+    // "hello world"
 
     // get the newest version of the board and player turn
     const activePlayer = game.getActivePlayer();
